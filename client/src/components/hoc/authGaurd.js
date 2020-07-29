@@ -12,6 +12,7 @@ export default (OriginalComponent) => {
     componentDidMount() {
       this.checkAuth();
     }
+    
 
     componentDidUpdate() {
       this.checkAuth();
