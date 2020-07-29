@@ -1,20 +1,46 @@
 import React, { Component } from "react";
-import * as actions from "../../actions/index";
+import BackGround from "./../../images/bg4.jpg";
+
 import { connect } from "react-redux";
 
 class LandingPage extends Component {
-  async componentDidMount() {
-    this.props.getSecret();
-  }
   render() {
-    return <div>This is LandingPage</div>;
+    var sectionStyle = {
+      width: "100%",
+      height: "100vh",
+      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.73)),
+      url(${BackGround})`,
+
+      backgroundSize: "cover",
+      background: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+
+      // filter: "brightness(50%)",
+    };
+    return (
+      <div style={sectionStyle}>
+        <div className="row">
+          <div className="col s6">
+            <div style={{ marginLeft: "4%" }}>
+              <p
+                style={{
+                  fontSize: "6rem",
+                  fontFamily: "Oswald",
+                  marginTop: "50px",
+                  marginBottom: "30px",
+                }}
+                className="grey-text text-lighten-2"
+              >
+                A platform for budding influencers to grow their influence
+              </p>
+              <button className="btn-large waves-effect">Get Started</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    secret: state.dash.secret,
-  };
-}
-
-export default connect(mapStateToProps, actions)(LandingPage);
+export default connect()(LandingPage);
