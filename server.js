@@ -36,11 +36,18 @@ app.use((err, req, res, next) => {
   res.send(err.message);
 });
 
-// Serve static assets in production
 if (process.env.NODE_ENV === "production") {
+  // Exprees will serve up production assets
   app.use(express.static("client/build"));
+
+  // Express serve up index.html file if it doesn't recognize route
+  const path = require("path");
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    let url = path.join(__dirname, "client/build", "index.html");
+    if (!url.startsWith("/app/"))
+      // since we're on local windows
+      url = url.substring(1);
+    res.sendFile(url);
   });
 }
 
