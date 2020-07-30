@@ -30,7 +30,7 @@ export const signUp = (data) => {
     try {
       console.log("Data received at signup: ", data);
       const resp = await axios.post(
-        "http://localhost:9122/api/v1/user/signup",
+        "/api/v1/user/signup",
         data
       );
       console.log("ress at local check: ", resp);
@@ -57,7 +57,7 @@ export const oauthGoogle = (data) => {
     try {
       console.log("we received at oauth: ", data);
       const res = await axios.post(
-        "http://localhost:9122/api/v1/user/google/oauth",
+        "/api/v1/user/google/oauth",
         { access_token: data.accessToken }
       );
       console.log("ress at google check: ", res);
@@ -80,7 +80,7 @@ export const oauthFacebook = (data) => {
     try {
       console.log("we received facebook: ", data);
       const res = await axios.post(
-        "http://localhost:9122/api/v1/user/facebook/oauth",
+        "/api/v1/user/facebook/oauth",
         {
           access_token: data.accessToken,
         }
@@ -129,7 +129,7 @@ export const signIn = (data) => {
   return async (dispatch) => {
     try {
       const res = await axios.post(
-        "http://localhost:9122/api/v1/user/signin",
+        "/api/v1/user/signin",
         data
       );
       console.log("res at signin: ", res);
